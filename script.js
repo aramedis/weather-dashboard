@@ -18,7 +18,7 @@ $(".search-button").on("click", function() {
     localStorage.setItem("cityArr", JSON.stringify(cityArr));
 
     //Direct Geocoding to get Lat and Lon
-    let geocodingUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`
+    let geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`
 
     $.ajax({
         url: geocodingUrl,
@@ -103,7 +103,7 @@ let historybtn = $(".btn-secondary");
 historybtn.on("click", function (event) {
     let historyCity = event.currentTarget.outerText
     // console.log(historyCity)
-    let geocodingUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${historyCity}&limit=1&appid=${key}`
+    let geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${historyCity}&limit=1&appid=${key}`
 
     $.ajax({
         url: geocodingUrl,
