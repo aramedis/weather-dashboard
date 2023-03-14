@@ -12,7 +12,31 @@ $(".search-button").on("click", function() {
     let cityBtn = $("<button>").addClass("col-1 cityBtn").text(city);
     $(".list-group").append(cityBtn);
     localStorage.setItem("cityArr", JSON.stringify(cityArr));
+
+    //Direct Geocoding
+    let geocodingUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`
+
+    $.ajax({
+        url: geocodingUrl,
+        method: "GET",
+      })
+        .then(function (response) {
+            // console.log(response[0].lat)
+            let weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${response[0].lat}&lon=${response[0].lon}&appid=${key}&units=metric`
+            // console.log(weatherURL)
+            weatherApi(weatherURL)
+        })
 });
+
+//Get response for Full weather data
+function weatherApi(weatherURL) {
+    $.ajax({
+        url: weatherURL,
+        method: "GET",
+    }).then(function (response) {
+        console.log(response)
+    });
+};
 
 //Get history from Local storage and populate with buttons
 function retrieveLocalStorage() {
