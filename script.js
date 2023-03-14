@@ -94,7 +94,7 @@ function retrieveLocalStorage() {
         $("#history").append(cityBtn);
     });
 }
-retrieveLocalStorage()
+retrieveLocalStorage();
 
 
 //History button functionality - can be improved
@@ -103,9 +103,9 @@ let historybtn = $(".btn-secondary");
 historybtn.on("click", function (event) {
     $("#today").empty();
     $("#forecast").empty();
-    let historyCity = event.currentTarget.outerText
+    let historyCity = event.currentTarget.outerText;
     // console.log(historyCity)
-    let geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${historyCity}&limit=1&appid=${key}`
+    let geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${historyCity}&limit=1&appid=${key}`;
 
     $.ajax({
         url: geocodingUrl,
@@ -116,8 +116,8 @@ historybtn.on("click", function (event) {
             let weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${response[0].lat}&lon=${response[0].lon}&appid=${key}&units=metric`
             let weather5dayURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${response[0].lat}&lon=${response[0].lon}&appid=${key}&units=metric`;
             // console.log(weatherURL)
-            weatherApiToday(weatherURL)
-            weatherApi5day(weather5dayURL)
+            weatherApiToday(weatherURL);
+            weatherApi5day(weather5dayURL);
         })
 
 })
