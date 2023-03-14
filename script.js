@@ -101,6 +101,8 @@ retrieveLocalStorage()
 
 let historybtn = $(".btn-secondary");
 historybtn.on("click", function (event) {
+    $("#today").empty();
+    $("#forecast").empty();
     let historyCity = event.currentTarget.outerText
     // console.log(historyCity)
     let geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${historyCity}&limit=1&appid=${key}`
